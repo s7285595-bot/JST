@@ -1,0 +1,16 @@
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, Cpu, HardDrive, Laptop, MessageCircle, MonitorCog, ShieldCheck, Wrench } from "lucide-react";
+import { whatsappUrl } from "@/lib/whatsapp";
+
+const services = [
+  { icon: MonitorCog, title: "Laptop diagnostics", text: "Initial checks to help identify performance, startup, display and hardware issues." },
+  { icon: Cpu, title: "Chip-level & motherboard repair", text: "Enquire about board-level diagnostics and repair options for supported laptop models." },
+  { icon: HardDrive, title: "SSD & RAM upgrades", text: "Explore storage and memory upgrades to improve everyday performance." },
+  { icon: Laptop, title: "Screen, keyboard & battery", text: "Ask about replacement options for common laptop components." },
+  { icon: Wrench, title: "Software & maintenance", text: "Help with operating system issues, drivers, cleanup and routine maintenance." },
+  { icon: ShieldCheck, title: "Cleaning & preventive care", text: "Enquire about internal cleaning, thermal checks and general laptop care." }
+];
+
+export default function RepairsPage() {
+  return <main><section className="bg-[#eef5f8] py-16 sm:py-20"><div className="container"><span className="eyebrow"><Wrench size={14}/> Laptop care</span><h1 className="mt-5 max-w-3xl text-4xl font-black leading-tight tracking-tight sm:text-5xl">Keep your laptop working at its best.</h1><p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">Tell us what is happening with your device. We can discuss the issue, supported repairs and the next steps before you bring it in.</p><a className="btn btn-primary mt-7" href={whatsappUrl("Hello Jaya Sri Technologies, I need laptop service or repair. Please advise.")} target="_blank" rel="noreferrer"><MessageCircle size={17}/> Enquire about a repair</a></div></section><section className="section"><div className="container"><div className="section-heading"><div><span className="eyebrow">Our service categories</span><h2>How can we help?</h2></div><p className="max-w-md text-sm leading-6 text-slate-500">Service availability, pricing and turnaround depend on the laptop model and diagnosis. Contact us for an assessment.</p></div><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{services.map(s=><article key={s.title} className="card p-6"><span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eaf4f7] text-brand"><s.icon size={23}/></span><h3 className="mt-5 text-lg font-black">{s.title}</h3><p className="mt-3 text-sm leading-6 text-slate-500">{s.text}</p><a className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-brand" href={whatsappUrl(`Hello Jaya Sri Technologies, I would like to enquire about: ${s.title}.`)} target="_blank" rel="noreferrer">Ask about this service <ArrowRight size={15}/></a></article>)}</div><div className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-500"><div className="mb-2 flex items-center gap-2 font-extrabold text-ink"><CheckCircle2 size={18} className="text-emerald-600"/> Before you visit</div>Back up important data where possible, bring your charger if relevant, and describe any recent damage or symptoms. Do not share passwords in a public form or WhatsApp message.</div></div></section></main>;
+}
